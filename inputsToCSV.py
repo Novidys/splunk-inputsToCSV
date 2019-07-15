@@ -7,17 +7,19 @@ from splunklib.client import connect
 from utils import parse
 
 
+HEADER = 'Description, Endpoint, Status, Index, Sourcetype'
 def main():
     opts = parse(sys.argv[1:], {}, ".splunkrc")
     service = connect(**opts.kwargs)
-    print('Description,Endpoint')
+
+    print(HEADER)
+
     for item in service.inputs:
         if item.kind.lower() == 'rest':
             if 'sourcetype' in item.content and 'description' in item.content and 'disabled' in item.content and \
-                    'endpoint' in item.content:
-                if item.content['sourcetype'].lower() == 'monitoring:webshop':
-                    if item.content['disabled'] == '0':
-                        print('%s,%s' % (item.content['description'], item.content['endpoint']))
+                    'endpoint' in item.content and 'index' in item.content:
+                print('%s,%s,%s,%s,%s' % (item.content['description'], item.content['endpoint'],
+                                          item.content['disabled'], item.content['index'], item.content['sourcetype']))
 
 
 if __name__ == "__main__":
