@@ -7,7 +7,7 @@ from splunklib.client import connect
 from utils import parse
 
 
-HEADER = 'Description,Endpoint,State,Index,St'
+HEADER = 'Description,Endpoint,State,Idx,St'
 def main():
     opts = parse(sys.argv[1:], {}, ".splunkrc")
     service = connect(**opts.kwargs)
