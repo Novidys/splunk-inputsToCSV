@@ -13,10 +13,11 @@ def main():
     print('Description')
     for item in service.inputs:
         if item.kind.lower() == 'rest':
-            if 'sourcetype' in item.content and 'description' in item.content and 'disabled' in item.content:
+            if 'sourcetype' in item.content and 'description' in item.content and 'disabled' in item.content and \
+                    'endpoint' in item.content:
                 if item.content['sourcetype'].lower() == 'monitoring:webshop':
                     if item.content['disabled'] == '0':
-                        print(item.content['description'])
+                        print('%s,%s' % (item.content['description'], item.content['endpoint']))
 
 
 if __name__ == "__main__":
