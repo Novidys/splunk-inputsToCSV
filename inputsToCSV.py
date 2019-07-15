@@ -13,9 +13,10 @@ def main():
 
     for item in service.inputs:
         if item.kind.lower() == 'rest':
-            if 'sourcetype' in item.content and 'description' in item.content:
+            if 'sourcetype' in item.content and 'description' in item.content and 'disabled' in item.content:
                 if item.content['sourcetype'].lower() == 'monitoring:webshop':
-                    print(item.content['description'])
+                    if item.content['disabled'] == '0':
+                        print(item.content['description'])
 
 
 if __name__ == "__main__":
