@@ -12,14 +12,10 @@ def main():
     service = connect(**opts.kwargs)
 
     for item in service.inputs:
-        header = '%s (%s)' % (item.name, item.kind)
-        print(header)
-        print('='*len(header))
-        content = item.content
-        for key in sorted(content.keys()):
-            value = content[key]
-            print('%s: %s' % (key, value))
-        print()
+        if item.kind.tolower() == 'rest':
+            if 'sourcetype' in item.content and 'description' in item.content:
+                if item.content['sourcetype'].tolower() == 'monitoring:webshop':
+                    print(item.content['description'])
 
 
 if __name__ == "__main__":
