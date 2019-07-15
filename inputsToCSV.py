@@ -12,7 +12,8 @@ def main():
     service = connect(**opts.kwargs)
 
     for item in service.inputs:
-        if item.kind.tolower() == 'rest':
+        kind = item.kind
+        if kind.tolower() == 'rest':
             if 'sourcetype' in item.content and 'description' in item.content:
                 if item.content['sourcetype'].tolower() == 'monitoring:webshop':
                     print(item.content['description'])
