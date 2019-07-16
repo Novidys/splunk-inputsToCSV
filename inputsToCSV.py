@@ -14,7 +14,7 @@ def main():
 
     print(HEADER)
 
-    response = service.get('data/inputs/rest', app='METRO_Webshop_Monitoring')
+    response = service.get('data/inputs/rest', app='METRO_Monitoring_Webshop')
     print(response['body'])
     for item in service.inputs:
         if item.kind.lower() == 'rest':
