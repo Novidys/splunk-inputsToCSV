@@ -14,6 +14,8 @@ def main():
 
     print(HEADER)
 
+    response = service.get('data/inputs/rest', app='METRO_Webshop_Monitoring')
+    print(response['body'])
     for item in service.inputs:
         if item.kind.lower() == 'rest':
             if 'sourcetype' in item.content and 'description' in item.content and 'disabled' in item.content and \
