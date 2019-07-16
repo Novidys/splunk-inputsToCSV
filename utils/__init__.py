@@ -69,11 +69,6 @@ RULES_SPLUNK = {
         'flags': ["--version"],
         'default': None,
         'help': 'Ignore. Used by JavaScript SDK.'
-    },
-    'cert_file': {
-        'flags': ["--certfile"],
-        'default': None,
-        'help': 'CA certificate file (optional)'
     }
 }
 
